@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+# Verify args integrity
+if [ $# -lt 1 ];then
+    echo "ArgumentError."
+    echo
+    echo "Usage:"
+    echo -e "\tCommand: <life>,"
+    echo -e "\tArgs: <YOUR_AGE> [<LIFE_EXPECTANCY>]."
+    echo -e "\nPlease insert your current Age. \U231B"
+    echo
+    exit 127
+fi
+
+arg1=$1
+if [ $# -lt 2 ];then
+    arg2=73
+    echo
+    printf "Live Expectancy $arg2 years (World Average 2023)\n"
+else
+    arg2=$2
+    echo
+    printf "Live Expectancy $arg2 years \n"
+fi
+
+
+# main - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+current_weeks=$(( $arg1 * 52 ))
+life_expectancy=$(( $arg2 * 52 ))
+
+wide=$(( `tput cols` - 1 ))
+
+# Sacred
+life=( `seq 0 1 $life_expectancy` )
+# Life Epochs
+epoch=( "\U1F7E6" "\U1F7E9" "\U1F7E8" "\U1F7E7" "\U1F7E5" "\U1F7EA" "\U2B1B")
+epoch_week=( 104 624 1040 1560 3380 99999 )
+epoch_status=0
+
+
+message="Your Dream ... Do it."
+
+if [[ $arg1 -gt $arg2 ]] || (( $arg2 > 100 ));then
+    # Impossible you're dead
+    echo -e "The most probably is that one dies reaching the life_expectancy ... "
+    echo -e "The inmortality doesn't exist ... "
+    echo
+    echo -e "Sorry, you're \U1F480\n"
+    # Printing motivational message
+    echo -ne "\x1b[3m"
+    for ((l=0; l<${#message}; l++)); do
+
+        echo -ne "${message[@]:l:1}"
+
+        if [[ l -ne 13 ]]; then
+            sleep 0.1;
+        else
+            echo -ne "\x1b[91m\x1b[1m"
+            sleep 1.5;
+        fi
+
+    done
+    
+    echo -e "\x1b[23m\x1b[5m \U1f90d"
+    sleep 1
+    echo -e "\x1b[0m"
+
+else
+    # Printing interface
+    echo
+    printf " > Lived   : ${epoch[*]:0:6}.\n"
+    printf "       life < 2 12 20 32 65 LE < dead\n"
+    printf " > To live : ${epoch[6]}.\n"
+    echo
+    echo -ne "\x1b[1m"
+    printf "\u2BB1 Here starts your life. \U1F424"
+
+    for week in ${life[@]}; do
+        # Setting prettify format
+        if !(( $week % $wide ));then
+            sleep 0.02
+            echo
+        fi   
+        
+        # Changing epoch
+        if [[ $week -gt $current_weeks ]]; then       
+            (( epoch_status = 6 ))
+        elif [[ $week -gt ${epoch_week[$epoch_status]} ]]; then
+            (( epoch_status++ ))
+        fi
+
+        # Printing corresponding square
+        echo -ne "${epoch[$epoch_status]}"
+
+    done
+
+    echo -e "\U1F480\n"
+
+fi
+
+# end main
