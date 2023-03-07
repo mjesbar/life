@@ -10,3 +10,10 @@ _"Life is not a problem to be solved, but a reality to be experienced."_
   
 ![step1](./diagrams/command1.png "Step 1")
 
+---
+
+![step2](./diagrams/command2.png "Step 2")
+
+---
+
+![step3](./diagrams/command3.png "Step 3")
