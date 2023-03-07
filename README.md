@@ -6,5 +6,7 @@ It's a simple life calendar describer. So, just clone and cp this repository on 
 `life <YOUR_AGE> [<LIFE_EXPECTANCY>]`
 
 _"Life is not a problem to be solved, but a reality to be experienced."_  
--_**Soren Kierkegaard**_
+-_**Soren Kierkegaard**_  
+  
+![step1](./diagrams/command1.png "Step 1")
 
