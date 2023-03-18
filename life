@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+
+
 # Verify args integrity
 if [ $# -lt 1 ];then
     echo "ArgumentError."
