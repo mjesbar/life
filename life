@@ -31,7 +31,7 @@ fi
 current_weeks=$(( $arg1 * 52 ))
 life_expectancy=$(( $arg2 * 52 ))
 
-wide=$(( `tput cols` ))
+wide=$(( `tput cols` - 1))
 
 # Sacred
 life=( `seq 0 1 $life_expectancy` )
